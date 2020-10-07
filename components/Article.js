@@ -2,6 +2,7 @@
 // OPTIONAL: if you're feeling adventurous, try to make this data an export from a different module, and import it here.
 // You can read about ES6 modules here: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
 const data = [
+
   {
     title: 'Lambda School Students: "We\'re the best!"',
     date: 'Nov 5th, 2018',
@@ -87,13 +88,65 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+ 
 ];
+
+const articleMaker = ((articaleObject)=>{
+const artical = document.createElement('div');
+artical.classList.add('article');
+const h2 = document.createElement('h2');
+const date = document.createElement('p');
+date.classList.add('date');
+const p1 = document.createElement('p');
+const p2 = document.createElement('p');
+const p3 = document.createElement('p');
+const span = document.createElement('span');
+span.classList.add('expandButton');
+
+artical.appendChild(h2);
+artical.appendChild(date);
+artical.appendChild(p1);
+artical.appendChild(p2);
+artical.appendChild(p3);
+artical.appendChild(span);
+
+h2.textContent = articaleObject.title;
+date.textContent = articaleObject.date;
+p1.textContent = articaleObject.firstParagraph;
+p2.textContent = articaleObject.secondParagraph;
+p3.textContent = articaleObject.thirdParagraph;
+span.textContent = "Expend Artical";
+
+span.addEventListener('click',()=>{
+  artical.classList.toggle('article-open')
+})
+console.log(artical);
+
+return artical;
+})
+const articles = document.querySelector('.articles')
+data.forEach(artical => {
+  articles.appendChild(articleMaker(artical))
+});
+
+const myArticleObject = {
+  
+    title: `About Rafiullah Rahmati`,
+    date:`06 Oct, 2020`,
+    firstParagraph: `Rafiullah Rahmat is full stuck web developer.`,
+    secondParagraph: `Rafiullah Rahmat is Student of Lambda School.`,
+    thirdParagraph: `Rafiullah Rahmati want to code more to be on the truck.`,
+  
+}
+articles.appendChild(articleMaker(myArticleObject)) ;
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
+const articalMaker = ((data)=>{
 
+})
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
