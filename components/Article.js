@@ -91,9 +91,9 @@ const data = [
  
 ];
 
-const articalMaker = ((articaleObject)=>{
+const articleMaker = ((articaleObject)=>{
 const artical = document.createElement('div');
-artical.classList.add('artical');
+artical.classList.add('article');
 const h2 = document.createElement('h2');
 const date = document.createElement('p');
 date.classList.add('date');
@@ -101,7 +101,7 @@ const p1 = document.createElement('p');
 const p2 = document.createElement('p');
 const p3 = document.createElement('p');
 const span = document.createElement('span');
-span.classList.add(expendButton);
+span.classList.add('expandButton');
 
 artical.appendChild(h2);
 artical.appendChild(date);
@@ -118,11 +118,13 @@ p3.textContent = articaleObject.thirdParagraph;
 span.textContent = "Expend Artical";
 
 span.addEventListener('click',()=>{
-  artical.classList.toggle('artical-open')
+  artical.classList.toggle('article-open')
 })
+console.log(artical);
+
 return artical;
 })
-const articales = document.querySelector('.articales')
+const articles = document.querySelector('.articles')
 data.forEach(artical => {
   articles.appendChild(articleMaker(artical))
 });
